@@ -1,0 +1,84 @@
+
+<form (ngSubmit)="addCompany(frm1)"
+      #frm1="ngForm"
+      novalidate>
+  <div class="form-group">
+    <label for="companyName">Name :</label>
+    <input type="text" class="form-control"
+           id="companyName"
+           placeholder="name"
+           [(ngModel)]="company.name"
+           required
+           #name="ngModel"
+           name="name">
+    <div *ngIf="name.errors && frm1.submitted" class="alert alert-danger">
+      name is required!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="companyAddress">Address :</label>
+    <input type="text" class="form-control"
+           id="companyAddress"
+           placeholder="address"
+           [(ngModel)]="company.address"
+           required
+           #address="ngModel"
+           name="address">
+    <div *ngIf="address.errors && frm1.submitted" class="alert alert-danger">
+      address is required!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="companyRevenue">Revenue :</label>
+    <input type="number" class="form-control"
+           id="companyRevenue"
+           placeholder="revenue"
+           min="0"
+           [(ngModel)]="company.revenue"
+           required
+           pattern="[0-9]+"
+           #revenue="ngModel"
+           name="revenue">
+    <div *ngIf="revenue.errors && frm1.submitted" class="alert alert-danger">
+      revenue is required!
+    </div>
+  </div>
+  <div class="form-group inline">
+    <label>Phone No :</label>
+
+    <div class="form-row">
+      <div class="col-sm-4">
+        <input type="number" class="form-control"
+               placeholder="code"
+               min="0"
+               [(ngModel)]="company.code"
+               required
+               #code="ngModel"
+               pattern="[0-9]+"
+               name="code">
+        <div *ngIf="code.errors && frm1.submitted" class="alert alert-danger">
+          code is required!
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <input type="number" class="form-control"
+               placeholder="phone"
+               [(ngModel)]="company.phone"
+               required
+               min="0"
+               pattern="[0-9]+"
+               #phone="ngModel"
+               name="phone">
+        <div *ngIf="phone.errors && frm1.submitted" class="alert alert-danger">
+          phone is required!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary btn-sm btn-block">Create
+  </button>
+
+</form>

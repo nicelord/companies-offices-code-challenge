@@ -1,0 +1,80 @@
+<form (ngSubmit)="addOffice(frm2)"
+      #frm2="ngForm"
+      novalidate>
+  <div class="form-group">
+    <label for="officeName">Name :</label>
+    <input type="text" class="form-control"
+           id="officeName"
+           placeholder="name"
+           [(ngModel)]="office.name"
+           required
+           #name="ngModel"
+           name="name">
+    <div *ngIf="name.errors && frm2.submitted" class="alert alert-danger">
+      name is required!
+    </div>
+  </div>
+
+  <div class="form-group inline">
+    <label>Location :</label>
+
+    <div class="form-row">
+      <div class="col-sm-6">
+        <input type="number" class="form-control"
+               placeholder="code"
+               min="0"
+               [(ngModel)]="office.lat"
+               required
+               #lat="ngModel"
+               name="lat">
+        <div *ngIf="lat.errors && frm2.submitted" class="alert alert-danger">
+          lat is required!
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <input type="number" class="form-control"
+               placeholder="log"
+               [(ngModel)]="office.log"
+               required
+               #log="ngModel"
+               name="log">
+        <div *ngIf="log.errors && frm2.submitted" class="alert alert-danger">
+          log is required!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Office Start Date :</label>
+    <input type="date" class="form-control"
+           id="date"
+           placeholder="date"
+           [(ngModel)]="office.date"
+           required
+           #date="ngModel"
+           name="date">
+    <div *ngIf="date.errors && frm2.submitted" class="alert alert-danger">
+      date is required!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="company">Company :</label>
+    <select class="form-control"
+            id="company"
+            [(ngModel)]="selectedCompany"
+            required
+            #company="ngModel"
+            name="company">
+        <option *ngFor="let company of companies | async; let i = index" [ngValue]="company">{{company.name}}</option>
+    </select>
+  </div>
+  <button
+    [disabled]="(companies | async)?.length < 1"
+    type="submit"
+    class="btn btn-primary btn-sm btn-block">Create</button>
+
+</form>
+
+

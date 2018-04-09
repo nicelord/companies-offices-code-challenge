@@ -1,0 +1,18 @@
+<div class="p-2" [routerLink]="['/office/'+index+'/']">
+  <div class="card">
+    <div class="card-header">
+      {{company.name}}
+      <button (click)="delCompany(index)" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">Address : </h6>
+      <p class="card-text">{{company.address}}</p>
+      <h6 class="card-title">Revenue : </h6>
+      <p class="card-text">{{company.revenue}}</p>
+      <h6 class="card-title">Phone No : </h6>
+      <p class="card-text">({{company.code}}) {{company.phone}}</p>
+    </div>
+  </div>
+</div>

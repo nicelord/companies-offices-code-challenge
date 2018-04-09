@@ -1,0 +1,29 @@
+<div class="container" style="width: 700px">
+  <div class="card">
+    <div class="card-header">
+      {{company.name}}
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">Address : </h6>
+      <p class="card-text">{{company.address}}</p>
+      <h6 class="card-title">Revenue : </h6>
+      <p class="card-text">{{company.revenue}}</p>
+      <h6 class="card-title">Phone No : </h6>
+      <p class="card-text">({{company.code}}) {{company.phone}}</p>
+      <button [routerLink]="['/overview']" class="btn btn-secondary btn-sm btn-block">Back to Overview</button>
+      <hr>
+      <h2>Office :</h2>
+      <div class="row" *ngIf="company.offices.length > 0; else nooffice">
+        <div class="col-sm-6" *ngFor="let office of company.offices; let i = index">
+          <app-office [office]="office" [company]="company"></app-office>
+        </div>
+      </div>
+      <ng-template #nooffice>
+        <div class="alert alert-danger" role="alert">
+          There is no offices created yet!
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+</div>
